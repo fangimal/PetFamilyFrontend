@@ -10,7 +10,7 @@ import {
 	Stack,
 	Text,
 } from "@chakra-ui/react";
-import { Pet } from "../pages/Pets";
+import { Pet } from "../types/Pet";
 
 type Props = {
 	pet: Pet;
