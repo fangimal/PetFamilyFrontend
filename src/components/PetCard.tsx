@@ -10,13 +10,11 @@ import {
 	Stack,
 	Text,
 } from "@chakra-ui/react";
-import { Pet } from "../types/Pet";
+import { Pet } from "../types/models/Pet";
 
-type Props = {
-	pet: Pet;
-};
 
-const PetCard = ({ pet }: Props) => {
+
+const PetCard = (pet: Pet) => {
 	return (
 		<Card maxW="sm">
 			<CardBody>
@@ -36,10 +34,10 @@ const PetCard = ({ pet }: Props) => {
 			<Divider />
 			<CardFooter>
 				<ButtonGroup spacing="2">
-					<Button variant="solid" colorScheme="blue">
+					<Button variant="solid" colorScheme="primary">
 						Приютить
 					</Button>
-					<Button variant="ghost" colorScheme="blue">
+					<Button variant="ghost" colorScheme="gray">
 						Следить
 					</Button>
 				</ButtonGroup>
@@ -49,4 +47,3 @@ const PetCard = ({ pet }: Props) => {
 };
 
 export { PetCard };
- 

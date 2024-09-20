@@ -1,6 +1,7 @@
 import axios from "axios";
 import { Envelope } from "../types/Envelope";
-import { Pet } from "../types/Pet";
+import { Pet } from "../types/models/Pet";
+
 
 
 const PETS_URL = "http://localhost:5000/Pets";

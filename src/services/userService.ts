@@ -1,4 +1,7 @@
 import axios from "axios";
+import { Envelope } from "../types/Envelope";
+import { handleError } from "../helpers/errorHandler";
+
 
 const USER_URL = "http://localhost:5000/user";
 
@@ -7,10 +10,22 @@ export type LoginRequest = {
 	password: string;
 };
 
-export const login = async (request: LoginRequest): Promise<string> => {
-	const response = await axios.post(USER_URL + "/login", request);
+export type AuthResponse = {
+	token: string;
+	role: string;
+};
 
-	const token = response.data;
+export const loginAPI = async (request: LoginRequest) => {
+	try {
+		const response = await axios.post<Envelope<AuthResponse>>(
+			USER_URL + "/login",
+			request
+		);
 
-	return token;
+		const token = response.data;
+
+		return token;
+	} catch (error) {
+		handleError(error);
+	}
 };

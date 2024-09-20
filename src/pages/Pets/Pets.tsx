@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
-import { getPets } from "../services/petsService";
-import { PetCard } from "../components/PetCard";
-import { Pet } from "../types/Pet";
+import { Pet } from "../../types/models/Pet";
+import { PetCard } from "../../components/PetCard";
+import { getPets } from "../../services/petsService";
+
 
 
 

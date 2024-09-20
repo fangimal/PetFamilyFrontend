@@ -1,20 +1,33 @@
 import { Icon } from "@iconify/react/dist/iconify.js";
-import { Link, redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { useAuth } from "../providers/AuthProvider";
 
 const Header = () => {
-    return(
-        <header className="w-full flex flex-row justify-between  h-16 items-center bg-red-400 shadow-x1">
-        <Icon width={45} height={45}  icon="twemoji:grinning-cat" className = "px-1" />
-          <span className ="text-5xl text-white">PetFamily</span>
-          <Link to={"/login"}><Icon 
-            width={45} 
-            height={45} 
-            icon="ri:user-line" 
-            style={{color: "#fff"}} 
-            className = "px-1" 
-          /></Link>
-        </header>
-    );
+	const { isLoggedIn, logout } = useAuth();
+
+	return (
+		<header className="w-full flex flex-row justify-between px-4 py-3 items-center bg-red-400 shadow-xl">
+			<Icon style={{ color: "#fff" }} width="52" height="52" icon="mdi:cat" />
+			<span className="text-5xl text-white">Pet Family</span>
+			<div className="flex flex-row gap-3">
+				<Link to={isLoggedIn ? "/profile" : "/login"}>
+					<Icon
+						style={{ color: "#fff" }}
+						icon="ri:user-line"
+						width="52"
+						height="52"
+					/>
+				</Link>
+				<Icon
+					width="52"
+					style={{ color: "#fff" }}
+					height="52"
+					icon="material-symbols:logout"
+					onClick={() => logout()}
+				/>
+			</div>
+		</header>
+	);
 };
 
-export {Header};
+export { Header };
